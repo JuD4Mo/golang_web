@@ -1,11 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
-</head>
-<body>
-  <h1>Hola desde golang</h1>
-</body>
-</html>
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main>
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <h1 class="hero-title">Build fast, reliable, and efficient software.</h1>
+          <p class="hero-subtitle">
+            Welcome to my minimalist Golang learning journey. exploring the power of Go for web development.
+          </p>
+          <div class="d-flex justify-content-center gap-3">
+             <a href="#" class="btn btn-go rounded-pill">Start Learning</a>
+             <a href="#" class="btn btn-outline-dark rounded-pill">View Source</a>
+          </div>
+          <br><br>
+          <img src="/public/images/golang.png" style="max-height: 200px; width: auto;" alt="Gopher" class="img-fluid mt-4">
+        </section>
+
+        <!-- Feature Grid (Example) -->
+        <div class="row mb-5 mt-5">
+          <div class="col-md-6 mb-4">
+            <div class="card-custom h-100 p-4 bg-light border-0">
+               <h3 class="fw-bold">Go Routines</h3>
+               <p class="text-muted">Concurrency involves the composition of independently executing processes.</p>
+               <a href="#" class="text-go-blue text-decoration-none fw-bold">Read more &rarr;</a>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card-custom h-100 p-4 bg-light border-0">
+               <h3 class="fw-bold">Interfaces</h3>
+               <p class="text-muted">Interfaces are named collections of method signatures. They provide a powerful way to define behavior.</p>
+               <a href="#" class="text-go-blue text-decoration-none fw-bold">Read more &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="pb-3 mb-4 font-italic border-bottom mt-5">
+          Latest Updates
+        </h3>
+
+        <div class="row">
+           <div class="col-md-4 mb-4">
+              <div class="card-custom">
+                 <div class="card-body">
+                    <small class="text-go-blue fw-bold text-uppercase">Tutorial</small>
+                    <h5 class="card-title mt-2">Setting up the environment</h5>
+                    <p class="card-text text-muted small">Learn how to install Go and configure your workspace.</p>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-4 mb-4">
+              <div class="card-custom">
+                 <div class="card-body">
+                    <small class="text-go-blue fw-bold text-uppercase">Tip</small>
+                    <h5 class="card-title mt-2">Effective Go</h5>
+                    <p class="card-text text-muted small">Common patterns and idioms for writing clear Go code.</p>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-4 mb-4">
+              <div class="card-custom">
+                 <div class="card-body">
+                    <small class="text-go-blue fw-bold text-uppercase">Deep Dive</small>
+                    <h5 class="card-title mt-2">Understanding Defer</h5>
+                    <p class="card-text text-muted small">A defer statement defers the execution of a function until the surrounding completes.</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+      </main>
+    </div>
+
+<!--/Contenido-->
+{{template "foot"}}

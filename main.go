@@ -15,6 +15,15 @@ func main() {
 	mux := mux.NewRouter()
 	mux.HandleFunc("/", routes.Home)
 	mux.HandleFunc("/params/{id}/{slug}", routes.Params)
+	mux.HandleFunc("/params_querystring", routes.ParamsQueryString)
+	mux.HandleFunc("/structs", routes.Structs)
+
+	//Archivos estáticos hacia mux
+	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
+	mux.PathPrefix("/public/").Handler(s)
+
+	//404 error
+	mux.NotFoundHandler = mux.NewRoute().HandlerFunc(routes.Page404).GetHandler()
 
 	err := godotenv.Load()
 	if err != nil {

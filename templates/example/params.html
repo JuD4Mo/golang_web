@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
-</head>
-<body>
-  <h1>Hola desde params</h1>
-  <ul>
-    <li>ID: {{ .id }} </li>
-    <li>SLUG: {{ .slug }} </li>
-  </ul>
-</body>
-</html>
+{{template "header"}}
+
+<!--Contenido-->
+  <main class="container">
+      <h1>Hola desde params</h1>
+    <ul>
+      <li>ID: {{ .id }} </li>
+      <li>SLUG: {{ .slug }} </li>
+    </ul>
+  </main>
+  </div>
+<!--/Contenido-->
+{{template "foot"}}

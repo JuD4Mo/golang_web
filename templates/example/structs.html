@@ -1,0 +1,42 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+  <main class="container">
+    <h1>Structs</h1>
+    <h3>Declare variables</h3>
+    {{with $value:="My value"}}
+      <p> {{$value}} </p>
+    {{end}}
+    <hr/>
+    <h3>Valores desde struct</h3>
+    <ul>
+      <li>Nombre: {{.Name}} </li>
+      <li>Age: {{.Age}} </li>
+      <li>Type: {{.Type}} </li>
+    </ul>
+    <hr/>
+    <h3>Condicionales</h3>
+    {{if gt .Age 18}}
+    <p>Eres mayor de edad</p>
+    {{else}}
+    <p>Eres menor de edad</p>
+    {{end}}
+    {{if eq .Type 1}}
+    <p>Eres administrador</p>
+    {{else}}
+    <p>Eres un usuario</p>
+    {{end}}
+    <hr/>
+    <h3>Iteraciones</h3>
+    {{.Abilities}}
+    <ul>
+      {{range .Abilities}}
+        <li> {{.Name}} </li>
+      {{end}}
+    </ul>
+  </main>
+  </div>
+
+<!--/Contenido-->
+{{template "foot"}}
