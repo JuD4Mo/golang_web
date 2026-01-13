@@ -18,6 +18,9 @@ func main() {
 	mux.HandleFunc("/params_querystring", routes.ParamsQueryString)
 	mux.HandleFunc("/structs", routes.Structs)
 
+	mux.HandleFunc("/forms", routes.Forms_get)
+	mux.HandleFunc("/forms-post", routes.Forms_post).Methods("POST")
+
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
 	mux.PathPrefix("/public/").Handler(s)

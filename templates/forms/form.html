@@ -1,0 +1,31 @@
+{{template "header"}}
+
+<main class="container">
+   <h1>Forms</h1>
+   <div class="row">
+      <form action="/forms-post" method="POST">
+
+         <div class="form-group">
+         <label for="name">Name:</label>
+         <input type="text" name="name" id="name" class="form-control" placeholder="name:"/>  
+         </div>
+         <div class="form-group">
+         <label for="email">Email:</label>
+         <input type="text" name="email" id="email" class="form-control" placeholder="email:"/>  
+         </div>
+         <div class="form-group">
+         <label for="phone">Phone:</label>
+         <input type="text" name="phone" id="phone" class="form-control" placeholder="email:"/>  
+         </div>
+         <div class="form-group">
+         <label for="password">Password:</label>
+         <input type="password" name="password" id="password" class="form-control" placeholder="email:"/>  
+         </div>
+         <hr/>
+         <input type="submit" value="Send" title="send" class="btn btn-primary">
+
+      </form>
+   </div>
+</main>
+</div>
+{{template "foot"}}
