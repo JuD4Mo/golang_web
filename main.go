@@ -24,6 +24,16 @@ func main() {
 	mux.HandleFunc("/forms/upload", routes.Forms_upload)
 	mux.HandleFunc("/forms/upload-post", routes.Forms_upload_post).Methods("POST")
 
+	mux.HandleFunc("/resources", routes.Resources_get)
+	mux.HandleFunc("/resources/pdf", routes.Resources_pdf)
+	mux.HandleFunc("/resources/pdf-generate", routes.Resources_pdf_generate_better)
+
+	mux.HandleFunc("/resources/excel", routes.Resources_excel)
+
+	mux.HandleFunc("/resources/qr", routes.Resources_qr)
+
+	mux.HandleFunc("/resources/send-email", routes.Resources_send_email)
+
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
 	mux.PathPrefix("/public/").Handler(s)

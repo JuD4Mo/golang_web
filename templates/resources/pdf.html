@@ -1,0 +1,26 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create PDF</li>
+          </ol>
+        </nav>
+         <h1>Create PDF</h1>
+            {{if ne .css ""}}
+            <div class="alert alert-{{.css}} alert-dismissible fade show" role="alert">
+                {{.message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{end}}
+         <a href="/resources/pdf-generate" class="btn btn-danger"><i class="fas fa-file-pdf"></i>Create</a>
+      </main>
+    </div>
+
+<!--/Contenido-->
+{{template "foot"}}

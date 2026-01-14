@@ -1,0 +1,20 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/resources">Resources</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Generate QR</li>
+          </ol>
+        </nav>
+         <h1>Generate QR</h1>
+         <img src="data:image/png;base64,{{.image}}" alt="" />
+      </main>
+    </div>
+
+<!--/Contenido-->
+{{template "foot"}}
