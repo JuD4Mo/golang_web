@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 
@@ -11,7 +10,15 @@ import (
 
 func Forms_get(response http.ResponseWriter, request *http.Request) {
 	template := template.Must(template.ParseFiles("templates/forms/form.html", utilities.Frontend))
-	template.Execute(response, nil)
+
+	css_session, css_message := utilities.ReturnFlashMessage(response, request)
+	data := map[string]string{
+		"css":     css_session,
+		"message": css_message,
+	}
+
+	template.Execute(response, data)
+
 	// template, err := template.ParseFiles("templates/example/home.html", "templates/layout/frontend.html")
 	// if err != nil {
 	// 	panic(err)
@@ -37,7 +44,9 @@ func Forms_post(response http.ResponseWriter, request *http.Request) {
 	}
 
 	if msg != "" {
-		fmt.Fprintln(response, msg)
-		return
+		// fmt.Fprintln(response, msg)
+		// return
+		utilities.CreateFlashMessage(response, request, "danger", msg)
+		http.Redirect(response, request, "/forms", http.StatusSeeOther)
 	}
 }
