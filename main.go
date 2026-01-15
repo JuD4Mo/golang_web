@@ -34,6 +34,12 @@ func main() {
 
 	mux.HandleFunc("/resources/send-email", routes.Resources_send_email)
 
+	mux.HandleFunc("/client-http", routes.Client_http)
+	mux.HandleFunc("/client-http/create", routes.Client_http_create)
+	mux.HandleFunc("/client-http/create-post", routes.Client_http_create_post).Methods("POST")
+	mux.HandleFunc("/client-http/edit/{id}", routes.Client_http_edit)
+	mux.HandleFunc("/client-http/edit-post/{id}", routes.Client_http_edit_post).Methods("POST")
+
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
 	mux.PathPrefix("/public/").Handler(s)

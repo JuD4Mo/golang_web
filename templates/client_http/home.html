@@ -1,0 +1,40 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main>
+        <h1>Client http</h1>
+        <p class="d-flex justify-content-end">
+         <a href="/client-http/create" class="btn btn-success">
+            <i class="fas fa-check"></i>
+         Crear
+         </a>
+        </p>
+        <div class="table-responsive">
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               {{range .body}}
+               <tr>
+                  <td>{{.Id}}</td>
+                  <td>{{.Name}}</td>
+                  <td>
+                     <a href="/client-http/edit/{{.Id}}"><i class="fas fa-edit"></i></a>
+                  </td>
+               </tr>
+               {{end}}
+            </tbody>
+         </table>
+        </div>
+      </main>
+    </div>
+
+<!--/Contenido-->
+{{template "foot"}}
