@@ -10,6 +10,22 @@ var Frontend string = "templates/layout/frontend.html"
 
 var Store = sessions.NewCookieStore([]byte("session-name"))
 
+func ReturnLogin(request *http.Request) (string, string) {
+	session, _ := Store.Get(request, "session-name")
+	id := ""
+	name := ""
+	if session.Values["id"] != nil {
+		id_t, _ := session.Values["id"].(string)
+		id = id_t
+	}
+	if session.Values["name"] != nil {
+		name_t, _ := session.Values["name"].(string)
+		name = name_t
+	}
+
+	return id, name
+}
+
 func CreateFlashMessage(response http.ResponseWriter, request *http.Request, css, message string) {
 	session, err := Store.Get(request, "flash-session")
 	if err != nil {

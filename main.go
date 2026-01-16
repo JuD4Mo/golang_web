@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/JuD4Mo/golang-web/protected"
 	"github.com/JuD4Mo/golang-web/routes"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -50,6 +51,15 @@ func main() {
 	mux.HandleFunc("/mysql/edit_post/{id}", routes.Mysql_edit_post).Methods("POST")
 
 	mux.HandleFunc("/mysql/delete/{id}", routes.Mysql_delete)
+
+	mux.HandleFunc("/security/register", routes.Register)
+	mux.HandleFunc("/security/register_post", routes.Register_post).Methods("POST")
+
+	mux.HandleFunc("/security/login", routes.Login)
+	mux.HandleFunc("/security/login_post", routes.Login_post).Methods("POST")
+	mux.HandleFunc("/security/protected", protected.Protected(routes.Security_protected))
+
+	mux.HandleFunc("/security/logout", routes.Logout)
 
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
