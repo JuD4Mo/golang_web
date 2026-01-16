@@ -1,0 +1,43 @@
+{{template "header"}}
+
+<main class="container">
+   <h1>MySQL</h1>
+  {{if ne .Css ""}}
+   <div class="alert alert-{{.Css}} alert-dismissible fade show" role="alert">
+      {{.Message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+   </div>
+  {{end}}
+  <p class="d-flex justify-content-end">
+    <a href="/mysql/create" class="btn btn-success"><i class="fas fa-check"></i>Create</a>
+  </p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+      </thead>
+    <tbody>
+      {{range .Data}}
+      <tr>
+        <td>{{.Id}}</td>
+        <td>{{.Name}}</td>
+        <td>{{.Email}}</td>
+        <td>{{.Phone}}</td>
+        <td style="text-align:center;">
+          <a href="/mysql/edit/{{.Id}}"><i class="fas fa-edit"></i></a>
+          <a href="javascript:void(0);" onclick="confirmarSweet('Are you sure you want to delete the record?','/mysql/delete/{{.Id}}')"><i class="fas fa-trash-alt"></i></a>
+        </td>
+      </tr>
+      {{end}}
+    </tbody>
+    </table>
+  </div>
+</main>
+</div>
+{{template "foot"}}

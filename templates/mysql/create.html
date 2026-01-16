@@ -1,0 +1,44 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/mysql">Mysql</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
+          </ol>
+        </nav>
+        <h1>Create</h1>
+        {{if ne .css ""}}
+        <div class="alert alert-{{.css}} alert-dismissible fade show" role="alert">
+            {{.message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{end}} 
+        <div class="row">
+        <form action="/mysql/create_post" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id ="name" class="form-control" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="text" name="email" id ="email" class="form-control" placeholder="Email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id ="phone" class="form-control" placeholder="Phone" />
+          </div>
+          <hr/>
+          <input type="submit" class="btn btn-primary" value="Send">
+        </form>
+        </div>
+        </div>
+      </main>
+    </div>
+
+<!--/Contenido-->
+{{template "foot"}}

@@ -42,6 +42,15 @@ func main() {
 
 	mux.HandleFunc("/client-http/delete/{id}", routes.Client_http_delete)
 
+	mux.HandleFunc("/mysql", routes.Mysql_list)
+	mux.HandleFunc("/mysql/create", routes.Mysql_create)
+	mux.HandleFunc("/mysql/create_post", routes.Mysql_create_post).Methods("POST")
+
+	mux.HandleFunc("/mysql/edit/{id}", routes.Mysql_edit)
+	mux.HandleFunc("/mysql/edit_post/{id}", routes.Mysql_edit_post).Methods("POST")
+
+	mux.HandleFunc("/mysql/delete/{id}", routes.Mysql_delete)
+
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
 	mux.PathPrefix("/public/").Handler(s)
