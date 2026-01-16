@@ -28,3 +28,13 @@ type ClientHttp2 struct {
 	Message string
 	Data    Client
 }
+
+type User struct {
+	Id       int
+	Name     string
+	Email    string
+	Phone    string
+	Password string
+}
+
+type Users []User
