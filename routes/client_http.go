@@ -133,9 +133,9 @@ func Client_http_edit(response http.ResponseWriter, request *http.Request) {
 
 	data := map[string]string{
 
-		"id":     vars["id"],
-		"nombre": datos.Name,
-		"slug":   datos.Slug,
+		"id":   vars["id"],
+		"name": datos.Name,
+		"slug": datos.Slug,
 	}
 	template.Execute(response, data)
 }
@@ -187,4 +187,43 @@ func Client_http_edit_post(response http.ResponseWriter, request *http.Request) 
 	defer reg2.Body.Close()
 
 	http.Redirect(response, request, "/client-http/edit/"+vars["id"], http.StatusSeeOther)
+}
+
+func Client_http_delete(response http.ResponseWriter, request *http.Request) {
+	vars := mux.Vars(request)
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", "https://www.api.tamila.cl/api/categorias/"+vars["id"], nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	req.Header.Set("Authorization", token)
+
+	reg, err := client.Do(req)
+	if err != nil {
+
+	}
+	defer reg.Body.Close()
+	body, err := io.ReadAll(reg.Body)
+	//fmt.Printf("%s", body)
+	//convertimos el resultado a un slice
+	datos := models.Category{}
+	errJson := json.Unmarshal(body, &datos)
+	if errJson != nil {
+
+	}
+	//edito el registro
+
+	req2, err2 := http.NewRequest("DELETE", "https://www.api.tamila.cl/api/categorias/"+vars["id"], nil)
+	req2.Header.Set("Authorization", token)
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+	reg2, err3 := client.Do(req2)
+	defer reg.Body.Close()
+	if err3 != nil {
+
+	}
+
+	defer reg2.Body.Close()
+	http.Redirect(response, request, "/client-http", http.StatusSeeOther)
 }

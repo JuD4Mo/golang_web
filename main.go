@@ -40,6 +40,8 @@ func main() {
 	mux.HandleFunc("/client-http/edit/{id}", routes.Client_http_edit)
 	mux.HandleFunc("/client-http/edit-post/{id}", routes.Client_http_edit_post).Methods("POST")
 
+	mux.HandleFunc("/client-http/delete/{id}", routes.Client_http_delete)
+
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
 	mux.PathPrefix("/public/").Handler(s)

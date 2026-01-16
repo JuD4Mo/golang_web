@@ -27,6 +27,7 @@
                   <td>{{.Name}}</td>
                   <td>
                      <a href="/client-http/edit/{{.Id}}"><i class="fas fa-edit"></i></a>
+                     <a href="javascript:void(0);" onclick="confirmarSweet('Are you sure you want to delete the record?','/client-http/delete/{{.Id}}');"><i class="fas fa-trash-alt"></i></a>
                   </td>
                </tr>
                {{end}}
