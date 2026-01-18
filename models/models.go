@@ -38,3 +38,10 @@ type User struct {
 }
 
 type Users []User
+
+type PaypalOrderResponseModel struct {
+	Id            string                   `json:"id"`
+	Status        string                   `json:"status"`
+	PaymentSource map[string]interface{}   `json:"payment_source"`
+	Links         []map[string]interface{} `json:"links"`
+}

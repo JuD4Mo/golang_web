@@ -58,8 +58,10 @@ func main() {
 	mux.HandleFunc("/security/login", routes.Login)
 	mux.HandleFunc("/security/login_post", routes.Login_post).Methods("POST")
 	mux.HandleFunc("/security/protected", protected.Protected(routes.Security_protected))
+	mux.HandleFunc("/security/logout", protected.Protected(routes.Logout))
 
-	mux.HandleFunc("/security/logout", routes.Logout)
+	mux.HandleFunc("/payments", routes.Payments_home)
+	mux.HandleFunc("/payments/paypal", routes.Payments_paypal)
 
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
