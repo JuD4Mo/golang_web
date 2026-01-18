@@ -135,6 +135,36 @@ func returnOrderPaypal(token string) string {
 	return paypal.Id
 }
 
+func returnScreenshotPaypal(token string, param string) string {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("godotenv.Load:", err)
+	}
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", os.Getenv("PAYPAL_BASE_URI")+"/v2/checkout/orders/"+param+"/capture", nil)
+	if err != nil {
+		fmt.Println(err, "err 1")
+		return ""
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+token)
+
+	reg, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err, "err 2")
+		return ""
+	}
+	defer reg.Body.Close()
+	if reg.Status == "422 Unprocessable Entity" {
+
+		return "bad"
+	} else {
+
+		return "good"
+	}
+
+}
+
 func returnTokenPaypal() string {
 	err := godotenv.Load()
 	if err != nil {
@@ -166,6 +196,20 @@ func Payments_paypal(response http.ResponseWriter, request *http.Request) {
 		"message":   css_mensaje,
 		"token":     token,
 		"paypal_id": paypalId,
+	}
+	template.Execute(response, data)
+}
+
+func Payments_paypal_response(response http.ResponseWriter, request *http.Request) {
+	template := template.Must(template.ParseFiles("templates/payments/paypal_response.html", utilities.Frontend))
+	token := returnTokenPaypal()
+	state := returnScreenshotPaypal(token, request.URL.Query().Get("token"))
+	css_sesion, css_mensaje := utilities.ReturnFlashMessage(response, request)
+	data := map[string]string{
+		"css":     css_sesion,
+		"message": css_mensaje,
+		"token":   request.URL.Query().Get("token"),
+		"state":   state,
 	}
 	template.Execute(response, data)
 }

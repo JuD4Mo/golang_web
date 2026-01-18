@@ -1,0 +1,20 @@
+{{template "header"}}
+
+<!--Contenido-->
+
+      <!-- Main Content -->
+      <main class="container">
+         <h1>Paypal response</h1>
+         {{if eq .state "good"}}
+             <div class="alert alert-success">
+      Tu pago se gestionó exitosamente con el número de transacción <strong>{{.token}}</strong>
+    </div>
+     {{end}}
+    {{ if eq .state  "mal"}}
+  <div class="alert alert-danger">La transacción <strong>{{.token}}</strong> ya está caducada</div>
+  {{end}} 
+      </main>
+    </div>
+ 
+<!--/Contenido-->
+{{template "foot"}}

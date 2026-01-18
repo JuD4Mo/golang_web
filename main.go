@@ -62,6 +62,7 @@ func main() {
 
 	mux.HandleFunc("/payments", routes.Payments_home)
 	mux.HandleFunc("/payments/paypal", routes.Payments_paypal)
+	mux.HandleFunc("/payments/paypal/response", routes.Payments_paypal_response)
 
 	//Archivos estáticos hacia mux
 	s := http.StripPrefix("/public/", http.FileServer(http.Dir("./public/")))
