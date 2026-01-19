@@ -155,13 +155,14 @@ func returnScreenshotPaypal(token string, param string) string {
 		return ""
 	}
 	defer reg.Body.Close()
-	if reg.Status == "422 Unprocessable Entity" {
+	body, _ := io.ReadAll(reg.Body)
+	fmt.Println("capture response:", reg.StatusCode, string(body))
 
+	if reg.StatusCode == 422 {
 		return "bad"
-	} else {
-
-		return "good"
 	}
+
+	return "good"
 
 }
 
